@@ -41,6 +41,10 @@ var Sudoku;
             }
             return output;
         };
+        Schema.prototype.getCellAtXyPosition = function (x, y) {
+            var position = Sudoku.CellPosition.xyToPosition({ x: x, y: y });
+            return this._cells[position];
+        };
         Schema.prototype.organizeCellsIntoRowsColumnsAndBlocks = function () {
             this.rowsArray = this.buildArrayFromIterator(function (index, schema) {
                 return new Sudoku.RowIterator(index, schema);

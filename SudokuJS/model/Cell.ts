@@ -74,6 +74,9 @@
 
             this.possibleValues[possibleValue]--;
 
+            if (this.possibleValues[possibleValue] < 0)
+                throw new Error("Lock counter can't go negative!"); 
+
             if (this.possibleValues[possibleValue] === 0)
                 this._numberOfPossibleValues++;
         }
@@ -84,6 +87,9 @@
                 this._numberOfPossibleValues--;
 
             this.possibleValues[possibleValue]++;
+
+            if (this.possibleValues[possibleValue] > 3)
+                throw new Error("Lock counter can't be greater than 3!"); 
         }
 
         private addPossibleValueToArrayOfCells(possibleValue: string, array: Cell[]): void {

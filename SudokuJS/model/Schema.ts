@@ -47,6 +47,11 @@
             return output;
         }
 
+        public getCellAtXyPosition(x: number, y: number) {
+            var position = CellPosition.xyToPosition({ x: x, y: y });
+            return this._cells[position];
+        }
+
         private organizeCellsIntoRowsColumnsAndBlocks() {
             this.rowsArray = this.buildArrayFromIterator((index, schema) => { return new RowIterator(index, schema)});
             this.columnsArray = this.buildArrayFromIterator((index, schema) => { return new ColumnIterator(index, schema) });

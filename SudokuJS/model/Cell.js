@@ -82,6 +82,8 @@ var Sudoku;
         };
         Cell.prototype.addPossibleValue = function (possibleValue) {
             this.possibleValues[possibleValue]--;
+            if (this.possibleValues[possibleValue] < 0)
+                throw new Error("Lock counter can't go negative!");
             if (this.possibleValues[possibleValue] === 0)
                 this._numberOfPossibleValues++;
         };
@@ -89,6 +91,8 @@ var Sudoku;
             if (this.possibleValues[possibleValue] === 0)
                 this._numberOfPossibleValues--;
             this.possibleValues[possibleValue]++;
+            if (this.possibleValues[possibleValue] > 3)
+                throw new Error("Lock counter can't be greater than 3!");
         };
         Cell.prototype.addPossibleValueToArrayOfCells = function (possibleValue, array) {
             for (var i in array) {
