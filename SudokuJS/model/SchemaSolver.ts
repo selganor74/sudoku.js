@@ -21,7 +21,7 @@
                 console.log("Solution Found! After: " + ( this.iterations - this.lastSolutionIterations) );
                 this.lastSolutionIterations = this.iterations;
                 console.log(this.schema.dumpSchema());
-                // throw new Error("Solution found !!!");
+                throw new Error("Solution found !!!");
                 this.solutionsFound++;
                 console.log("Solutions found 'till now: " + this.solutionsFound);
 

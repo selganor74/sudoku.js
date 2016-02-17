@@ -20,23 +20,17 @@ var Sudoku;
             this._position = new Sudoku.CellPosition(linearPosition);
         }
         Object.defineProperty(Cell.prototype, "position", {
-            get: function () {
-                return this._position;
-            },
+            get: function () { return this._position; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(Cell.prototype, "numberOfPossibleValues", {
-            get: function () {
-                return this._numberOfPossibleValues;
-            },
+            get: function () { return this._numberOfPossibleValues; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(Cell.prototype, "isConstrained", {
-            get: function () {
-                return this._isConstrained;
-            },
+            get: function () { return this._isConstrained; },
             enumerable: true,
             configurable: true
         });
@@ -49,9 +43,7 @@ var Sudoku;
             return toReturn;
         };
         Object.defineProperty(Cell.prototype, "currentValue", {
-            get: function () {
-                return this._currentValue;
-            },
+            get: function () { return this._currentValue; },
             enumerable: true,
             configurable: true
         });

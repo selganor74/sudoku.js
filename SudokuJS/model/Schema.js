@@ -46,15 +46,9 @@ var Sudoku;
             return this._cells[position];
         };
         Schema.prototype.organizeCellsIntoRowsColumnsAndBlocks = function () {
-            this.rowsArray = this.buildArrayFromIterator(function (index, schema) {
-                return new Sudoku.RowIterator(index, schema);
-            });
-            this.columnsArray = this.buildArrayFromIterator(function (index, schema) {
-                return new Sudoku.ColumnIterator(index, schema);
-            });
-            this.blocksArray = this.buildArrayFromIterator(function (index, schema) {
-                return new Sudoku.BlockIterator(index, schema);
-            });
+            this.rowsArray = this.buildArrayFromIterator(function (index, schema) { return new Sudoku.RowIterator(index, schema); });
+            this.columnsArray = this.buildArrayFromIterator(function (index, schema) { return new Sudoku.ColumnIterator(index, schema); });
+            this.blocksArray = this.buildArrayFromIterator(function (index, schema) { return new Sudoku.BlockIterator(index, schema); });
         };
         Schema.prototype.combineCellsAndRowsColumnsBlocksArray = function () {
             for (var i = 0; i < this.NUMBER_OF_CELLS_PER_SIDE * this.NUMBER_OF_CELLS_PER_SIDE; i++) {

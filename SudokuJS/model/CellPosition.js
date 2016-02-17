@@ -9,30 +9,22 @@ var Sudoku;
             this._y = xy.y;
         }
         Object.defineProperty(CellPosition.prototype, "x", {
-            get: function () {
-                return this._x;
-            },
+            get: function () { return this._x; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(CellPosition.prototype, "y", {
-            get: function () {
-                return this._y;
-            },
+            get: function () { return this._y; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(CellPosition.prototype, "block", {
-            get: function () {
-                return this._block;
-            },
+            get: function () { return this._block; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(CellPosition.prototype, "linear", {
-            get: function () {
-                return this._linear;
-            },
+            get: function () { return this._linear; },
             enumerable: true,
             configurable: true
         });

@@ -20,7 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <TypeScriptToolsVersion>1.4</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.6</TypeScriptToolsVersion>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,6 +60,40 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="angular-gui\sudoku-schema-directive\sudokuSchemaTemplate.html" />
+    <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\ie8.css" />
+    <Content Include="assets\css\images\overlay.png" />
+    <Content Include="assets\css\main.css" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\js\ie\backgroundsize.min.htc" />
+    <Content Include="assets\js\ie\html5shiv.js" />
+    <Content Include="assets\js\ie\PIE.htc" />
+    <Content Include="assets\js\ie\respond.min.js" />
+    <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\jquery.poptrox.min.js" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\skel.min.js" />
+    <Content Include="assets\js\util.js" />
+    <Content Include="external\html5up-strata.zip" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\sass\ie8.scss" />
+    <Content Include="assets\sass\libs\_functions.scss" />
+    <Content Include="assets\sass\libs\_mixins.scss" />
+    <Content Include="assets\sass\libs\_skel.scss" />
+    <Content Include="assets\sass\libs\_vars.scss" />
+    <Content Include="assets\sass\main.scss" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="packages.config" />
+    <None Include=".bin\node.cmd" />
+    <None Include=".bin\npm.cmd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -67,13 +102,31 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\avatar.jpg" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\fulls\01.jpg" />
+    <Content Include="images\fulls\02.jpg" />
+    <Content Include="images\fulls\03.jpg" />
+    <Content Include="images\fulls\04.jpg" />
+    <Content Include="images\fulls\05.jpg" />
+    <Content Include="images\fulls\06.jpg" />
+    <Content Include="images\thumbs\01.jpg" />
+    <Content Include="images\thumbs\02.jpg" />
+    <Content Include="images\thumbs\03.jpg" />
+    <Content Include="images\thumbs\04.jpg" />
+    <Content Include="images\thumbs\05.jpg" />
+    <Content Include="images\thumbs\06.jpg" />
     <Content Include="index.html" />
+    <Content Include="LICENSE.txt" />
+    <Content Include="README.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="angular-gui\sudokuMainCtrl.ts" />
+    <TypeScriptCompile Include="angular-gui\sudoku-schema-directive\sudokuSchemaDirective.ts" />
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="model\BlockIterator.ts" />
     <TypeScriptCompile Include="model\Cell.ts" />
@@ -81,10 +134,15 @@
     <TypeScriptCompile Include="model\ColumnIterator.ts" />
     <TypeScriptCompile Include="model\ISchemaIterator.ts" />
     <TypeScriptCompile Include="model\LinearSchemaIterator.ts" />
+    <TypeScriptCompile Include="model\OrderedSchemaIterator.ts" />
     <TypeScriptCompile Include="model\RowIterator.ts" />
     <TypeScriptCompile Include="model\Schema.ts" />
     <TypeScriptCompile Include="model\SchemaSolver.ts" />
+    <TypeScriptCompile Include="typings\main.d.ts" />
+    <TypeScriptCompile Include="typings\main\ambient\angular\angular.d.ts" />
+    <TypeScriptCompile Include="typings\main\ambient\jquery\jquery.d.ts" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

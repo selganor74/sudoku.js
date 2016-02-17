@@ -7,8 +7,7 @@ var Sudoku;
             this.iterations = 0;
             this.lastSolutionIterations = 0;
         }
-        SchemaSolver.prototype.solve = function () {
-            var iterator = new Sudoku.LinearSchemaIterator(this.schema);
+        SchemaSolver.prototype.solve = function (iterator) {
             this.recursiveSolver(iterator);
         };
         SchemaSolver.prototype.recursiveSolver = function (iterator) {
@@ -20,7 +19,7 @@ var Sudoku;
                 console.log("Solution Found! After: " + (this.iterations - this.lastSolutionIterations));
                 this.lastSolutionIterations = this.iterations;
                 console.log(this.schema.dumpSchema());
-                // throw new Error("Solution found !!!");
+                throw new Error("Solution found !!!");
                 this.solutionsFound++;
                 console.log("Solutions found 'till now: " + this.solutionsFound);
                 var currentCell = iterator.getCurrent();
