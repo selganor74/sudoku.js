@@ -21,15 +21,18 @@
                 console.log("Solution Found! After: " + ( this.iterations - this.lastSolutionIterations) );
                 this.lastSolutionIterations = this.iterations;
                 console.log(this.schema.dumpSchema());
-                throw new Error("Solution found !!!");
+
                 this.solutionsFound++;
                 console.log("Solutions found 'till now: " + this.solutionsFound);
 
+                throw new Error("Solution found !!!");
+/*
                 var currentCell = iterator.getCurrent();
                 if (!currentCell.isConstrained)
                     currentCell.setCurrentValue("");
 
                 return;
+*/
             }
 
             // Case 2: We have another cell to Explore so we get it...

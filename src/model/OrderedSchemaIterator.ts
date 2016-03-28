@@ -34,7 +34,7 @@
                 var currentElement = this.toBeIterated[i];
                 if (currentElement.numberOfPossibleValues < minimumTillNow) {
                     found = currentElement;
-                    foundIndex = i;
+                    foundIndex = (new Number(i)).valueOf();
                     minimumTillNow = currentElement.numberOfPossibleValues;
                 }
             }

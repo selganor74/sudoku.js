@@ -7,17 +7,53 @@ module.exports = function(grunt) {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
-      build: {
+      dist: {
         src: 'src/<%= pkg.name %>.js',
         dest: 'build/<%= pkg.name %>.min.js'
       }
+    },
+    clean: {
+        build: ['build/*']
+    },
+    copy: {
+        build: {
+            files: [
+                {
+                    expand: true,
+                    cwd: 'src',
+                    src: [
+                        '**/**.html', '**/*.json', '**/*.css', 
+                        'assets/**/*','Scripts/**/*','images/**/*'
+                    ],
+                    dest: 'build/'
+                }
+            ]
+        }
+    },
+    ts: {
+      build:  {
+          tsconfig: 'src/tsconfig.json'
+      } 
+    },
+    "http-server": {
+        run: {
+            root: 'build/',
+            port: 8082,
+            host: "localhost",
+            showDir: false,
+            openBrowser: true
+        }
     }
   });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-clean');  
+  grunt.loadNpmTasks('grunt-ts');
+  grunt.loadNpmTasks('grunt-http-server');
 
-  // Default task(s).
-  grunt.registerTask('default', ['uglify']);
-
+  // TASKS
+  grunt.registerTask('run', ['http-server']);
+  grunt.registerTask('build', ['clean','ts','copy']);
 };
