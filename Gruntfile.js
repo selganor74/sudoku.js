@@ -23,9 +23,20 @@ module.exports = function(grunt) {
                     cwd: 'src',
                     src: [
                         '**/**.html', '**/*.json', '**/*.css', 
-                        'assets/**/*','Scripts/**/*','images/**/*'
+                        'assets/**/*','Scripts/**/*','images/**/*',
+                        'model/**/*.ts'
                     ],
                     dest: 'build/'
+                }
+            ]
+        },
+        "after-build-for-ng2-gui": {
+            files: [
+                {
+                    expand: true,
+                    cwd: 'build/model',
+                    src: ['**/*'],
+                    dest: 'ng2-gui/src/assets/sudoku-model'
                 }
             ]
         }
@@ -55,5 +66,5 @@ module.exports = function(grunt) {
 
   // TASKS
   grunt.registerTask('run', ['http-server']);
-  grunt.registerTask('build', ['clean','ts','copy']);
+  grunt.registerTask('build', ['clean','ts','copy:build','copy:after-build-for-ng2-gui']);
 };

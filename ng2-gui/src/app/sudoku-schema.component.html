@@ -1,0 +1,12 @@
+<div>
+    <table>
+        <tr *ngFor="let row of schemaRows">
+            <td *ngFor="let column of schemaColumns">
+                <span>{{schema.getCellAtXyPosition( column, row ).currentValue}}</span>
+            </td>
+        </tr>
+    </table>
+    <span>Solutions found: {{solver.getSolutionsFound()}}</span>
+
+    <button (click)="solve()">Solve</button>
+</div>

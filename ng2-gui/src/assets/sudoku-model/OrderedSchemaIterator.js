@@ -1,38 +1,27 @@
-﻿
-import {ISchemaIterator} from "./ISchemaIterator";
-import {Cell} from "./Cell";
-import {Schema} from "./Schema";
-export class OrderedSchemaIterator implements ISchemaIterator<Cell> {
-    // -1 means before first element;
-    private position = -1;
-    private iterated: Cell[];
-    private toBeIterated: Cell[];
-    private currentCell: Cell;
-
-    constructor(private schema: Schema) {
+"use strict";
+var OrderedSchemaIterator = (function () {
+    function OrderedSchemaIterator(schema) {
+        this.schema = schema;
+        this.position = -1;
         this.initialize();
     }
-
-    private initialize() {
+    OrderedSchemaIterator.prototype.initialize = function () {
         this.position = -1;
         this.iterated = [];
         this.initToBeIteratedArray();
-    }
-
-    private initToBeIteratedArray() {
+    };
+    OrderedSchemaIterator.prototype.initToBeIteratedArray = function () {
         this.toBeIterated = [];
         for (var i in this.schema.cells) {
             var currentElement = this.schema.cells[i];
             if (!currentElement.isConstrained)
                 this.toBeIterated.push(currentElement);
         }
-    }
-
-    private extractCellWithLeastPossibleValuesFromToBeIterated(): Cell {
-        var found: Cell;
-        // Initialize minimumTillNow to maximum number of possible values +1, so that first iteration will always be satisfied.
-        var minimumTillNow: number = 10;
-        var foundIndex: number;
+    };
+    OrderedSchemaIterator.prototype.extractCellWithLeastPossibleValuesFromToBeIterated = function () {
+        var found;
+        var minimumTillNow = 10;
+        var foundIndex;
         for (var i in this.toBeIterated) {
             var currentElement = this.toBeIterated[i];
             if (currentElement.numberOfPossibleValues < minimumTillNow) {
@@ -43,21 +32,18 @@ export class OrderedSchemaIterator implements ISchemaIterator<Cell> {
         }
         this.toBeIterated.splice(foundIndex, 1);
         return found;
-    }
-
-    public moveNext(): Cell {
+    };
+    OrderedSchemaIterator.prototype.moveNext = function () {
         if (!this.hasNext())
             throw new Error("No elements left!");
-
         if (this.currentCell) {
             this.iterated.push(this.currentCell);
         }
         this.currentCell = this.extractCellWithLeastPossibleValuesFromToBeIterated();
         this.position = this.currentCell.position.linear;
         return this.currentCell;
-    }
-
-    public movePrevious(): Cell {
+    };
+    OrderedSchemaIterator.prototype.movePrevious = function () {
         if (!this.hasPrevious())
             throw new Error("No elements left!");
         if (this.currentCell) {
@@ -66,34 +52,30 @@ export class OrderedSchemaIterator implements ISchemaIterator<Cell> {
         this.currentCell = this.iterated.pop();
         this.position = this.currentCell.position.linear;
         return this.currentCell;
-    }
-
-    public hasNext(): boolean {
+    };
+    OrderedSchemaIterator.prototype.hasNext = function () {
         return this.toBeIterated.length > 0;
-    }
-
-    public hasPrevious(): boolean {
+    };
+    OrderedSchemaIterator.prototype.hasPrevious = function () {
         return this.iterated.length > 0;
-    }
-
-    public hasCurrent(): boolean {
+    };
+    OrderedSchemaIterator.prototype.hasCurrent = function () {
         return (!!this.currentCell);
-    }
-
-    public getCurrent(): Cell {
+    };
+    OrderedSchemaIterator.prototype.getCurrent = function () {
         return this.currentCell;
-    }
-
-    goAfterLast() {
+    };
+    OrderedSchemaIterator.prototype.goAfterLast = function () {
         this.position = Number.MAX_VALUE;
         if (this.currentCell) {
             this.iterated.push(this.currentCell);
         }
         this.iterated = this.iterated.concat(this.toBeIterated);
         this.currentCell = undefined;
-    }
-    
-    goBeforeFirst() {
+    };
+    OrderedSchemaIterator.prototype.goBeforeFirst = function () {
         this.initialize();
-    }
-}
+    };
+    return OrderedSchemaIterator;
+}());
+exports.OrderedSchemaIterator = OrderedSchemaIterator;
