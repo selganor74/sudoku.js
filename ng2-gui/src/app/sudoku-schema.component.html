@@ -1,8 +1,8 @@
-<div>
-    <table>
+<div class="table-responsive">
+    <table class="table">
         <tr *ngFor="let row of schemaRows">
             <td *ngFor="let column of schemaColumns">
-                <span>{{schema.getCellAtXyPosition( column, row ).currentValue}}</span>
+                <sudoku-cell [cell]="schema.getCellAtXyPosition( column, row )"></sudoku-cell>
             </td>
         </tr>
     </table>

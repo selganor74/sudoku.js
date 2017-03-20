@@ -6,11 +6,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SudokuSchemaComponent } from './sudoku-schema.component';
+import { SudokuCellComponent } from './sudoku-cell.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SudokuSchemaComponent
+    SudokuSchemaComponent,
+    SudokuCellComponent
   ],
   imports: [
     BrowserModule,
