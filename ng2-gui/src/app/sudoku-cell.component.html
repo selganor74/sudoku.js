@@ -1,3 +1,5 @@
-<div class="text-center" [style.background-color]="getBackgroundColor()">
-    <span [style.font-weight]="cell.isConstrained ? 'bold' : 'normal'">{{cell.currentValue}}</span>
+<div class="text-center" (click)="isEditing=isEditing?isEditing:!isEditing" [style.background-color]="getBackgroundColor()">
+    <span  *ngIf="!isEditing"  [style.font-weight]="cell.isConstrained ? 'bold' : 'normal'">{{cell.currentValue}}&nbsp;</span>
+    <input *ngIf="isEditing"   (keyup)="onKeyUp($event)" type="text" maxlength="1" size="1"/>
+    <span>{{event | json}}</span>
 </div>

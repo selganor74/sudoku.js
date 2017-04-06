@@ -32,6 +32,11 @@ export class Cell {
         this._position = new CellPosition(linearPosition);
     }
 
+    public clear() {
+        this._isConstrained = false;
+        this.setCurrentValue("");
+    }
+
     public getPossibleValues(): string[] {
         var toReturn: string[] = [];
         for (var i in this.possibleValues) {

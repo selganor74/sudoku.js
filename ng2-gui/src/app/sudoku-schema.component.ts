@@ -12,6 +12,14 @@ export class SudokuSchemaComponent {
     public solver: Sudoku.SchemaSolver;
 
     constructor() {
+        this.reset();
+    }
+
+    public solve() {
+        this.solver.moveNext();
+    }
+
+    public reset() {
         this.schema = new Sudoku.Schema();
         this.schema.createNew();
 
@@ -25,16 +33,14 @@ export class SudokuSchemaComponent {
         this.schema.getCellAtXyPosition(7, 1).setConstrainedValue("8");
         this.schema.getCellAtXyPosition(8, 0).setConstrainedValue("9");
 
-        // runs the solver in a background thread. ?
-        //var iterator = new Sudoku.OrderedSchemaIterator(schema);
-        //window.setTimeout(solver.solve( iterator ), 0);
-
         this.solver = new Sudoku.SchemaSolver(this.schema, new Sudoku.OrderedSchemaIterator(this.schema));
-
     }
 
-    public solve() {
-        this.solver.moveNext();
+    public clear() {
+        let i = new Sudoku.LinearSchemaIterator(this.schema);
+        while (i.hasNext()) {
+             i.moveNext().clear();
+        }        
     }
 
 }

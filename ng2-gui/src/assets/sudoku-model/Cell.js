@@ -33,6 +33,10 @@ var Cell = (function () {
         enumerable: true,
         configurable: true
     });
+    Cell.prototype.clear = function () {
+        this._isConstrained = false;
+        this.setCurrentValue("");
+    };
     Cell.prototype.getPossibleValues = function () {
         var toReturn = [];
         for (var i in this.possibleValues) {

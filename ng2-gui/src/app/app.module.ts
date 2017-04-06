@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { SudokuSchemaComponent } from './sudoku-schema.component';
 import { SudokuCellComponent } from './sudoku-cell.component';
+import { AutoFocusInputDirective } from './auto-focus-input.directive';
 
 @NgModule({
   declarations: [
